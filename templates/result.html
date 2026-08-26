@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction Result</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+
+        <h1>Prediction Result</h1>
+
+        <div class="success-notification">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Analysis completed successfully!</span>
+        </div>
+
+        {% if prediction == "✅ Genuine Review" %}
+        <h2 class="success">
+            {{ prediction }}
+        </h2>
+        {% endif %}
+
+        {% if prediction == "❌ Fake Review" %}
+        <h2 class="danger">
+            {{ prediction }}
+        </h2>
+        {% endif %}
+
+
+        <h3>Confidence: {{ confidence }}%</h3>
+        <h3>Sentiment:{{ sentiment }}</h3>
+
+        <div class="review-box">
+            <h3>Review:</h3>
+            <p>
+                {{ review }}
+            </p>
+
+        </div>
+
+        <br>
+
+        <a href="/" class="btn">
+            Predict Another Review
+        </a>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <p>
+            © AI Fake Review Detection System. All rights reserved.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

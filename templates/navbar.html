@@ -1,0 +1,40 @@
+<nav class="navbar">
+
+    <div class="nav-brand">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>AI Fake Review Detection</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('home') }}">
+            <i class="fa-solid fa-house"></i>
+            Home
+        </a>
+
+        <a href="{{ url_for('history') }}">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            History
+        </a>
+
+        <a href="{{ url_for('dashboard') }}">
+            <i class="fa-solid fa-chart-line"></i>
+            Dashboard
+        </a>
+
+        {% if session.get("admin_logged_in") %}
+
+        <a href="{{ url_for('logout') }}">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </a>
+
+        {% endif %}
+
+        <button id="theme-toggle" class="theme-toggle" type="button">
+            🌙
+        </button>
+
+    </div>
+
+</nav>

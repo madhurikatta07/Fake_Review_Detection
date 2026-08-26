@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+
+        <h1>Dashboard</h1>
+
+        <div class="dashboard-cards">
+
+            <div class="card">
+                <h2>Total Reviews</h2>
+                <h1>{{ data.total }}</h1>
+            </div>
+
+            <div class="card">
+                <h2>Genuine Reviews</h2>
+                <h1>{{ data.genuine }}</h1>
+            </div>
+
+            <div class="card">
+                <h2>Fake Reviews</h2>
+                <h1>{{ data.fake }}</h1>
+            </div>
+
+        </div>
+
+        <h2 class="section-title">Review Sentiment</h2>
+
+        <div class="dashboard-cards">
+
+            <div class="card">
+                <h2>😊 Positive Reviews</h2>
+                <h1>{{ data.positive }}</h1>
+            </div>
+
+            <div class="card">
+                <h2>😐 Neutral Reviews</h2>
+                <h1>{{ data.neutral }}</h1>
+            </div>
+
+            <div class="card">
+                <h2>😞 Negative Reviews</h2>
+                <h1>{{ data.negative }}</h1>
+            </div>
+
+
+        </div>
+
+
+        <section class="chart-section">
+
+
+            <h2>Fake vs Genuine Reviews</h2>
+
+            <img src="{{ url_for('static', filename='charts/pie_chart.png') }}" class="chart-image"
+                alt="Fake vs Genuine Reviews Chart">
+
+
+        </section>
+
+
+        <section class="chart-section">
+
+            <h2>Review Distribution</h2>
+
+            <img src="{{ url_for('static', filename='charts/bar_chart.png') }}" class="chart-image"
+                alt="Review Distribution Chart">
+
+
+        </section>
+
+        <section class="chart-section">
+
+            <h2>Review Sentiment Distribution</h2>
+
+            <img src="{{ url_for('static', filename='charts/sentiment_chart.png') }}" class="chart-image"
+                alt="Sentiment Chart">
+
+        </section>
+
+        <section class="chart-card">
+
+            <h2>📈 Confidence Trend</h2>
+
+            <div class="confidence-chart-container">
+
+                <canvas id="confidenceChart"></canvas>
+
+            </div>
+
+        </section>
+
+
+        <div class="buttons">
+
+
+            <a href="/" class="btn">
+                Home
+            </a>
+
+            <a href="/history" class="btn">
+                History
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+
+        <p>
+            © AI Fake Review Detection System. All rights reserved.
+        </p>
+
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+</html>

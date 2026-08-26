@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Review Details</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+</head>
+
+<body>
+
+    <!-- ==============================
+         NAVBAR
+    =============================== -->
+
+    {% include 'navbar.html' %}
+
+    <!-- ==============================
+         REVIEW DETAILS
+    =============================== -->
+
+    <main class="container">
+
+        <h1>Review Details</h1>
+
+        <div class="review-details-card">
+
+            <!-- Review -->
+
+            <div class="detail-section">
+
+                <h2>Original Review</h2>
+
+                <div class="review-box">
+
+                    <p>
+                        {{ review[1] }}
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <hr>
+
+
+            <!-- Prediction -->
+
+            <div class="detail-section">
+
+                <h3>Prediction</h3>
+
+                {% if review[2] == "✅ Genuine Review" %}
+
+                <p class="success">
+                    {{ review[2] }}
+                </p>
+
+                {% else %}
+
+                <p class="danger">
+                    {{ review[2] }}
+                </p>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- Confidence -->
+            <div class="detail-section">
+                <h3>Confidence</h3>
+                <p class="detail-value">
+                    {{ review[3] }}%
+                </p>
+
+            </div>
+
+
+            <!-- Sentiment -->
+            <div class="detail-section">
+                <h3>Sentiment</h3>
+                <p class="detail-value">
+                    {{ review[5] }}
+                </p>
+
+            </div>
+
+
+            <!-- Date -->
+            <div class="detail-section">
+                <h3>Date</h3>
+                <p class="detail-value">
+                    {{ review[4] }}
+                </p>
+
+            </div>
+
+
+            <br>
+
+
+            <!-- Buttons -->
+
+            <div class="details-buttons">
+                <a href="/history" class="btn">
+                    ← Back to History
+                </a>
+                <a href="/" class="btn">
+                    Predict Another Review
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ==============================
+         FOOTER
+    =============================== -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 AI Fake Review Detection | Final Year Project
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction History</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+
+        <h1>Prediction History</h1>
+
+        <form method="GET" action="/history" class="search-form">
+
+            <div class="search-box">
+
+                <span class="search-icon">🔍</span>
+
+                <input type="text" name="search" placeholder="Search reviews..." value="{{ search }}">
+
+            </div>
+
+            <select name="filter" class="filter-select">
+
+                <option value="All" {% if filter=="All" %}selected{% endif %}>
+                    All Reviews
+                </option>
+
+                <option value="✅ Genuine Review" {% if filter=="✅ Genuine Review" %}selected{% endif %}>
+                    Genuine Reviews
+                </option>
+
+                <option value="❌ Fake Review" {% if filter=="❌ Fake Review" %}selected{% endif %}>
+                    Fake Reviews
+                </option>
+
+            </select>
+
+            <button type="submit" class="search-btn">
+                🔍 Search
+            </button>
+
+            <a href="/history" class="clear-btn">
+                ✖ Clear Filters
+            </a>
+
+        </form>
+
+        <div class="export-section">
+
+            <a href="/export">
+                <button class="btn btn-primary">
+                    <i class="fa-solid fa-download"></i>
+                    Export CSV
+                </button>
+            </a>
+
+            <a href="/export/pdf">
+                <button class="btn btn-danger">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    Export PDF
+                </button>
+            </a>
+
+        </div>
+
+        {% if history %}
+
+        <div class="table-container">
+
+            <table class="history-table">
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Review</th>
+                        <th>Prediction</th>
+                        <th>Confidence</th>
+                        <th>Sentiment</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for row in history %}
+
+                    <tr>
+
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}%</td>
+                        <td>{{ row[5] }}</td>
+                        <td>{{ row[4] }}</td>
+
+                        <td>
+                            <a href="/review/{{ row[0] }}" class="btn">
+                                View
+                            </a>
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- PAGINATION -->
+
+        <div class="pagination">
+
+            {% if page > 1 %}
+
+            <a href="{{ url_for('history',page=page-1,search=search,filter=filter_value
+            ) }}">
+
+                ← Previous
+
+            </a>
+
+            {% endif %}
+
+            {% for p in range(1, total_pages + 1) %}
+
+            <a href="{{ url_for('history',page=p,search=search,filter=filter_value
+            ) }}" class="{% if p == page %}active{% endif %}">
+
+                {{ p }}
+
+            </a>
+
+            {% endfor %}
+
+            {% if page < total_pages %} <a href="{{ url_for('history',page=page+1,search=search,filter=filter_value
+            ) }}">
+
+                Next →
+
+                </a>
+
+                {% endif %}
+
+        </div>
+
+
+        {% else %}
+
+        <p>No prediction history found.</p>
+
+        {% endif %}
+
+        <br>
+
+        <a href="/" class="btn">
+            ← Back to Home
+        </a>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <p>
+            © AI Fake Review Detection System. All rights reserved.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

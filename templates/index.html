@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Fake Review Detection</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+</head>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+
+        <div class="flash-container">
+
+            {% for category, message in messages %}
+
+            <div class="flash-message {{ category }}">
+
+                <span>{{ message }}</span>
+
+                <button type="button"
+                    onclick="let msg=this.parentElement; msg.classList.add('fade-out'); setTimeout(() => msg.remove(), 300);">
+                    ×
+                </button>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% endif %}
+
+        {% endwith %}
+
+        <h1>AI Fake Review Detection</h1>
+
+        <!-- Your review form starts here -->
+
+        <!-- {% if error %}
+        <p style="color:red;">
+            {{ error }}
+        </p>
+        {% endif %} -->
+
+        <form action="/predict" method="POST" id="analyze-form">
+
+            <label for="review" class="review-label">Enter Review</label><br><br>
+
+            <textarea id="review" name="review" rows="8" cols="60" placeholder="Type your review here..."
+                required></textarea>
+
+            <button type="submit" id="submit-btn">
+
+                <span id="btn-text">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Detect Authenticity
+                </span>
+
+                <span id="btn-loader" style="display:none;">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i>
+                    Analyzing...
+                </span>
+
+            </button>
+
+        </form>
+
+        <!-- QUICK NAVIGATION -->
+
+        <div class="buttons">
+
+            <a href="/history" class="btn">
+                History
+            </a>
+
+            <a href="/dashboard" class="btn">Dashboard
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <p>
+            © AI Fake Review Detection System. All rights reserved.
+        </p>
+
+    </footer>
+
+    <!-- AUTO HIDE FLASH MESSAGE -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+
+</body>
+
+</html>
