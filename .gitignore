@@ -1,74 +1,110 @@
-# Byte-compiled / optimized / DLL files
+# ==========================================
+# FakeReviewDetection - .gitignore
+# ==========================================
+
+
+# ------------------------------------------
+# Python cache / compiled files
+# ------------------------------------------
 __pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
 *.so
 
-# Distribution / packaging
-.Python
+
+# ------------------------------------------
+# Virtual environments
+# ------------------------------------------
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+
+# ------------------------------------------
+# Environment / secrets
+# ------------------------------------------
+.env
+.env.*
+!.env.example
+
+
+# ------------------------------------------
+# Jupyter Notebook
+# ------------------------------------------
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+
+# ------------------------------------------
+# IDE / Editor files
+# ------------------------------------------
+.vscode/
+.idea/
+*.suo
+*.swp
+*.user
+*.userosscache
+*.sln
+
+
+# ------------------------------------------
+# Operating System files
+# ------------------------------------------
+.DS_Store
+Thumbs.db
+
+
+# ------------------------------------------
+# Python packaging
+# ------------------------------------------
 build/
-develop-eggs/
 dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
 MANIFEST
 
-# Flask stuff:
-instance/
-.webassets-cache
 
-# Jupyter Notebook
-.ipynb_checkpoints
-*/.ipynb_checkpoints/*
-
-# Databases
-*.db
+# ------------------------------------------
+# SQLite temporary files
+# ------------------------------------------
 *.db-journal
-*.sqlite
+*.sqlite-journal
+
+# Keep database.db if your project needs
+# the existing demo database.
+# database.db is intentionally NOT ignored.
+
+
+# ------------------------------------------
+# SQLiteStudio project files
+# ------------------------------------------
 *.sqbpro
 
-# Environments
-.env
-.venv
-venv/
-ENV/
-env.bak/
-venv.bak/
 
-# IDEs/Editors
-.vscode/
-.idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.swp
+# ------------------------------------------
+# Generated exports
+# ------------------------------------------
+exports/*
+!exports/.gitkeep
 
-# OS metadata
-.DS_Store
-Thumbs.db
 
-# Project-specific generated/runtime files
-dataset/
-exports/
-static/charts/
-models/*.pkl
-models/*.joblib
-models/*.txt
-
-# Textblob datasets (can be re-downloaded)
+# ------------------------------------------
+# TextBlob downloaded data
+# ------------------------------------------
 textblob_data/
 
+
+# ------------------------------------------
+# Project files that MUST remain tracked
+# ------------------------------------------
+# dataset/              -> KEEP
+# models/model.pkl     -> KEEP
+# models/tfidf.pkl     -> KEEP
+# static/charts/       -> KEEP
