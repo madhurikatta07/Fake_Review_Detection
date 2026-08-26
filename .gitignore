@@ -62,7 +62,7 @@ venv.bak/
 Thumbs.db
 
 # Project-specific generated/runtime files
-datasets/
+dataset/
 exports/
 static/charts/
 models/*.pkl
