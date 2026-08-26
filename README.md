@@ -215,43 +215,57 @@ models/
 
 FakeReviewDetection/
 │
-├── app.py
-├── database.py
-├── train_model.py
-├── requirements.txt
+├── .gitignore
+├── Procfile
 ├── README.md
+├── app.py
+├── compare_models.ipynb
 ├── database.db
+├── database.py
+├── database.sqbpro
+├── main.ipynb
+├── requirements.txt
+├── roughdata.ipynb
 │
 ├── dataset/
-│   └── clean_reviews.csv
+│   ├── clean_reviews.csv
+│   ├── fake reviews dataset.csv
+│   └── preprocessed_reviews.csv
+│
+├── exports/
+│   ├── history.pdf
+│   └── prediction_history.csv
 │
 ├── models/
 │   ├── model.pkl
 │   └── tfidf.pkl
 │
-├── templates/
-│   ├── home.html
-│   ├── result.html
-│   ├── history.html
-│   ├── dashboard.html
-│   ├── review_details.html
-│   └── navbar.html
+├── notebooks/
+│   ├── EDA.ipynb
+│   └── ed.ipynb
 │
 ├── static/
 │   ├── css/
 │   │   └── style.css
-│   │
 │   ├── js/
 │   │   └── main.js
-│   │
 │   └── charts/
-│       ├── pie_chart.png
 │       ├── bar_chart.png
+│       ├── pie_chart.png
 │       └── sentiment_chart.png
 │
-└── exports/
-    ├── history.csv
-    └── history.pdf
+├── templates/
+│   ├── dashboard.html
+│   ├── history.html
+│   ├── index.html
+│   ├── login.html
+│   ├── navbar.html
+│   ├── result.html
+│   └── review_details.html
+│
+└── utils/
+    ├── preprocess.py
+    └── sentiment.py
 
 The exact files may vary depending on the final version of the project.
 
