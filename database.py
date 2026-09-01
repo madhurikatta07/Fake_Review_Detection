@@ -1,60 +1,17 @@
-
-# import sqlite3
-
-# # Connect to database
-# connection = sqlite3.connect("database.db")
-
-# # Create cursor
-# cursor = connection.cursor()
-
-# # Create table
-# cursor.execute("""
-# CREATE TABLE IF NOT EXISTS ReviewHistory (
-
-#     id INTEGER PRIMARY KEY AUTOINCREMENT,
-
-#     review TEXT,
-
-#     prediction TEXT,
-
-#     confidence REAL,
-
-#     date TEXT
-
-# )
-# """)
-
-
-# def save_prediction(review, prediction, confidence, date):
-
-#     # Connect to database
-#     connection = sqlite3.connect("database.db")
-
-#     cursor = connection.cursor()
-
-#     cursor.execute("""
-#         INSERT INTO ReviewHistory
-#         (review, prediction, confidence, date)
-
-#         VALUES (?, ?, ?, ?)
-#     """, (review, prediction, confidence, date))
-
-#     connection.commit()
-
-#     connection.close()
-
-
 import sqlite3
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import os
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATABASE_PATH = os.path.join(BASE_DIR, "database.db")
+
 # create the database
 def create_database():
 
     # Connect to database
-    connection = sqlite3.connect("database.db")
+    connection = sqlite3.connect(DATABASE_PATH)
     # Create cursor
     cursor = connection.cursor()
 
@@ -78,7 +35,7 @@ def create_database():
 # save the data into the database
 def save_prediction(review, prediction, confidence,sentiment, date):
 
-    connection = sqlite3.connect("database.db")
+    connection = sqlite3.connect(DATABASE_PATH)
     cursor = connection.cursor()
 
     cursor.execute("""
@@ -93,7 +50,7 @@ def save_prediction(review, prediction, confidence,sentiment, date):
 # get search and filter of review history 
 def get_history_paginated(search="", filter_by="All", page=1, per_page=10):
 
-    connection = sqlite3.connect("database.db")
+    connection = sqlite3.connect(DATABASE_PATH)
     connection.row_factory = sqlite3.Row
 
     cursor = connection.cursor()
@@ -162,7 +119,7 @@ def get_history_paginated(search="", filter_by="All", page=1, per_page=10):
 # dashboard data
 def get_dashboard_data():
 
-    connection = sqlite3.connect("database.db")
+    connection = sqlite3.connect(DATABASE_PATH)
     cursor = connection.cursor()
 
     # Total reviews
@@ -224,7 +181,7 @@ def get_dashboard_data():
 # images generate charts
 def generate_charts():
 
-    connection = sqlite3.connect("database.db")
+    connection = sqlite3.connect(DATABASE_PATH)
     cursor = connection.cursor()
 
     cursor.execute(
@@ -320,7 +277,7 @@ def generate_charts():
 # Export data of database of excel and pdf
 def get_all_history():
 
-    connection = sqlite3.connect("database.db")
+    connection = sqlite3.connect(DATABASE_PATH)
 
     cursor = connection.cursor()
 
@@ -343,7 +300,7 @@ def get_all_history():
 # review_details
 def get_review_by_id(review_id):
 
-    connection = sqlite3.connect("database.db")
+    connection = sqlite3.connect(DATABASE_PATH)
 
     cursor = connection.cursor()
 
@@ -363,7 +320,7 @@ def get_review_by_id(review_id):
 # confidence graph data
 def get_confidence_data():
 
-    connection = sqlite3.connect("database.db")
+    connection = sqlite3.connect(DATABASE_PATH)
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()
 
