@@ -1,174 +1,236 @@
+
 # 🤖 AI Fake Review Detection
 
-An AI-powered web application that analyzes online product reviews and predicts whether a review is **Genuine** or **Fake** using Machine Learning.
+An AI/ML-powered web application that detects whether a product review is **Fake or Genuine** using Natural Language Processing (NLP) and Machine Learning.
 
-The application also performs **sentiment analysis**, stores prediction history in a SQLite database, provides a dashboard with analytical charts, supports search and filtering, and allows users to export prediction history as CSV and PDF files.
+The application analyzes review text, predicts its authenticity, provides a confidence score, performs sentiment analysis, stores prediction history, and presents analytical insights through a dashboard.
 
----
+## 🌐 Live Demo
 
-## 1. 📌 Project Title
+**Live Application:**
+https://fake-review-detection-9i3d.onrender.com
 
-**AI Fake Review Detection**
-
----
-
-## 2. 📝 Project Description
-
-Online reviews play an important role in influencing customer purchasing decisions. However, fake and deceptive reviews can mislead customers and negatively affect businesses.
-
-The **AI Fake Review Detection** system uses Natural Language Processing (NLP) and Machine Learning to analyze the textual content of a review and classify it as either:
-
-* ✅ **Genuine Review**
-* ❌ **Fake Review**
-
-The application provides a simple web interface where users can enter a review and receive a prediction along with its confidence score.
-
-In addition, the system provides:
-
-* Review sentiment analysis
-* Prediction history
-* Search and filtering
-* Review details
-* Dashboard analytics
-* Fake/Genuine review statistics
-* CSV export
-* PDF export
+**GitHub Repository:**
+https://github.com/madhurikatta07/Fake_Review_Detection
 
 ---
 
-## 3. ✨ Features
+## ✨ Features
 
-### 🔍 Fake Review Prediction
-
-Users can enter a product or service review and the system predicts whether it is:
-
-* **Genuine**
-* **Fake**
-
-### 📊 Confidence Score
-
-The application displays the confidence associated with the prediction.
-
-Example:
-
-```text
-Prediction: Genuine Review
-Confidence: 74.08%
-```
-
-### 😊 Sentiment Analysis
-
-The system analyzes the sentiment expressed in the review.
-
-Possible sentiment categories include:
-
-* Positive
-* Negative
-* Neutral
-
-### 📜 Prediction History
-
-Every prediction can be stored in the SQLite database.
-
-The history page displays information such as:
-
-* Review
-* Prediction
-* Confidence
-* Date
-
-### 🔎 Search and Filtering
-
-Users can search prediction history and filter reviews based on their classification.
-
-For example:
-
-```text
-All
-Genuine
-Fake
-```
-
-### 📈 Dashboard
-
-The dashboard provides an overview of prediction activity using:
-
-* Total reviews
-* Genuine reviews
-* Fake reviews
-* Pie chart
-* Bar chart
-* Sentiment chart
-
-### 📄 Review Details
-
-Users can view detailed information about an individual prediction.
-
-### 📥 Export Reports
-
-Prediction history can be exported as:
-
-* CSV
-* PDF
-
-### 🔐 Login
-
-The application includes a login interface for controlled access to application functionality.
-
-### 📱 Responsive Interface
-
-The application is designed to work across different screen sizes using HTML and CSS.
+* 🤖 Fake/Genuine review prediction
+* 📊 Prediction confidence score
+* 😊 Sentiment analysis
+* 💾 Prediction history using SQLite
+* 🔎 Search and filter prediction history
+* 📈 Dashboard with prediction statistics and charts
+* 📄 CSV and PDF report export
+* 🔍 Individual review details
+* 🔐 Login functionality
+* 📱 Responsive web interface
+* 🐳 Dockerized application
+* ☁️ Render deployment
 
 ---
 
-## 4. 🛠️ Technologies Used
+## 🛠️ Tech Stack
 
 ### Frontend
 
 * HTML5
 * CSS3
 * JavaScript
+* Bootstrap
 
 ### Backend
 
 * Python
 * Flask
+* Gunicorn
 
 ### Machine Learning
 
 * Scikit-learn
 * TF-IDF Vectorization
-* Machine Learning classification model
-
-### Natural Language Processing
-
+* Machine Learning Classification
 * NLTK
-* Text preprocessing
-* Stopword removal
-* Lemmatization
+* Natural Language Processing
 
 ### Database
 
 * SQLite
+* SQLAlchemy
 
-### Data Processing
+### Data Processing & Visualization
 
 * Pandas
 * NumPy
-
-### Visualization
-
 * Matplotlib
 
-### Development Tools
+### Development & Deployment
 
 * Jupyter Notebook
 * Git
 * GitHub
-* VS Code
+* Docker
+* Render
 
 ---
 
+## 🧠 Machine Learning
+
+The application uses Natural Language Processing and Machine Learning to classify reviews.
+
+### Text Preprocessing
+
+The review text is processed using:
+
+1. Lowercasing
+2. URL removal
+3. HTML tag removal
+4. Punctuation removal
+5. Number removal
+6. Whitespace normalization
+7. Stopword removal
+8. Lemmatization
+
+### TF-IDF Vectorization
+
+After preprocessing, the review is converted into numerical features using **TF-IDF (Term Frequency-Inverse Document Frequency)**.
+
+The trained vectorizer is stored in:
+
+```text
+models/tfidf.pkl
+```
+
+### Classification
+
+The trained Machine Learning model is stored in:
+
+```text
+models/model.pkl
+```
+
+The model classifies a review as:
+
+* ✅ **Genuine Review**
+* ❌ **Fake Review**
+
+---
+
+## 📊 Model Performance
+
+The evaluated model achieved approximately:
+
+| Metric    |      Score |
+| --------- | ---------: |
+| Accuracy  | **87.07%** |
+| Precision | **86.60%** |
+| Recall    | **87.61%** |
+| F1-Score  | **87.11%** |
+
+The model was evaluated using:
+
+* Accuracy
+* Precision
+* Recall
+* F1-Score
+* Confusion Matrix
+
+> Performance values may vary depending on the dataset split and trained model version.
+
+---
+
+## 📊 Sentiment Analysis
+
+In addition to fake-review classification, the application analyzes the sentiment expressed in the review.
+
+Possible sentiment results include:
+
+* 😊 Positive
+* 😐 Neutral
+* 😞 Negative
+
+This provides additional insight into the review beyond its authenticity prediction.
+
+---
+
+## 🔄 Application Workflow
+
+```text
+User enters review
+        ↓
+Text preprocessing
+        ↓
+TF-IDF vectorization
+        ↓
+Machine Learning model
+        ↓
+Fake / Genuine prediction
+        ↓
+Confidence score
+        ↓
+Sentiment analysis
+        ↓
+Save prediction to SQLite
+        ↓
+Display result
+        ↓
+History / Dashboard / Reports
+```
+
+---
+
+## 📈 Dashboard
+
+The dashboard provides analytical insights into previously analyzed reviews.
+
+It can display:
+
+* Total reviews
+* Genuine reviews
+* Fake reviews
+* Prediction distribution
+* Sentiment statistics
+* Charts and visualizations
+
+This helps understand the overall prediction activity of the application.
+
+---
+
+## 📜 Prediction History
+
+The application stores analyzed reviews in a SQLite database.
+
+Stored information includes:
+
+| Field      | Description           |
+| ---------- | --------------------- |
+| ID         | Unique prediction ID  |
+| Review     | Submitted review      |
+| Prediction | Fake or Genuine       |
+| Confidence | Prediction confidence |
+| Sentiment  | Review sentiment      |
+| Date       | Prediction date/time  |
+
+Users can search and filter the prediction history based on classification.
+
+---
+
+## 📥 Report Export
+
+Prediction history can be exported for further analysis or reporting.
+
+Supported formats:
+
+* 📄 CSV
+* 📑 PDF
+
+---
+
+## 📂 Project Structure
+
+```text
 ## 5. 📁 Project Structure
 
 ```text
@@ -177,6 +239,7 @@ FakeReviewDetection/
 ├── .env
 ├── .gitignore
 ├── Procfile
+├── Dockerfile
 ├── README.md
 ├── app.py
 ├── database.py
@@ -237,177 +300,29 @@ FakeReviewDetection/
     └── sentiment.py
 ```
 
-### Important Directories
-
-**`dataset/`**
-Contains the original, cleaned, and preprocessed review datasets.
-
-**`models/`**
-Contains the trained Machine Learning model and TF-IDF vectorizer.
-
-**`notebooks/`**
-Contains notebooks used for exploratory data analysis, preprocessing, and model comparison.
-
-**`templates/`**
-Contains Flask HTML templates.
-
-**`static/`**
-Contains CSS, JavaScript, and generated charts.
-
-**`utils/`**
-Contains reusable preprocessing and sentiment-analysis functions.
-
-**`exports/`**
-Stores generated CSV and PDF prediction-history files.
-
 ---
 
-## 6. 🤖 ML Model
+## 💻 Run Locally
 
-The project uses **Natural Language Processing and Machine Learning** for fake review classification.
-
-### Text Preprocessing
-
-Before prediction, the review is cleaned using NLP techniques such as:
-
-1. Convert text to lowercase
-2. Remove URLs
-3. Remove HTML tags
-4. Remove punctuation
-5. Remove numbers
-6. Remove unnecessary whitespace
-7. Remove stopwords
-8. Perform lemmatization
-
-Example:
-
-```text
-Original:
-"This product is AMAZING!!! Visit https://example.com"
-
-Processed:
-"product amazing"
-```
-
-### TF-IDF Vectorization
-
-The cleaned review is converted into numerical features using:
-
-**TF-IDF — Term Frequency-Inverse Document Frequency**
-
-The trained vectorizer is stored in:
-
-```text
-models/tfidf.pkl
-```
-
-### Classification Model
-
-The trained classification model is stored in:
-
-```text
-models/model.pkl
-```
-
-The application loads the trained model and TF-IDF vectorizer when making predictions.
-
-### Model Evaluation
-
-The model is evaluated using common classification metrics:
-
-* Accuracy
-* Precision
-* Recall
-* F1-score
-* Confusion Matrix
-
-Previously evaluated model results achieved approximately:
-
-```text
-Accuracy  : 87.07%
-Precision : 86.60%
-Recall    : 87.61%
-F1-Score  : 87.11%
-```
-
-> These values depend on the dataset split and trained model version.
-
----
-
-## 7. 📊 Dataset
-
-The project uses a **deceptive/fake review dataset** for training and evaluating the Machine Learning model.
-
-The dataset files are maintained inside:
-
-```text
-dataset/
-```
-
-### Dataset Files
-
-```text
-dataset/
-├── README.md
-├── clean_reviews.csv
-├── fake reviews dataset.csv
-└── preprocessed_reviews.csv
-```
-
-The dataset contains review text along with classification information used to train the fake-review detection model.
-
-### Dataset Processing Pipeline
-
-```text
-Raw Dataset
-     ↓
-Data Cleaning
-     ↓
-Exploratory Data Analysis
-     ↓
-Text Preprocessing
-     ↓
-TF-IDF Vectorization
-     ↓
-Train/Test Split
-     ↓
-Model Training
-     ↓
-Model Evaluation
-     ↓
-Saved Model
-```
-
-The processed data is stored in:
-
-```text
-clean_reviews.csv
-preprocessed_reviews.csv
-```
-
----
-
-## 8. ⚙️ Installation
-
-### Step 1: Clone the Repository
+### 1. Clone the Repository
 
 ```bash
-git clone <your-github-repository-url>
+git clone https://github.com/madhurikatta07/Fake_Review_Detection.git
 ```
 
-Move into the project directory:
+### 2. Navigate to the Project
 
 ```bash
-cd FakeReviewDetection
+cd Fake_Review_Detection
 ```
 
-### Step 2: Create a Virtual Environment
+### 3. Create a Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
-### Step 3: Activate the Virtual Environment
+### 4. Activate the Virtual Environment
 
 #### Windows
 
@@ -421,15 +336,15 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-### Step 4: Install Dependencies
+### 5. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 5: Download NLTK Resources
+### 6. Download NLTK Resources
 
-If required, download the NLTK resources used by the preprocessing system:
+If they are not already available locally:
 
 ```python
 import nltk
@@ -440,201 +355,122 @@ nltk.download('wordnet')
 nltk.download('omw-1.4')
 ```
 
----
-
-## 9. ▶️ How to Run
-
-After installing the dependencies, start the Flask application:
+### 7. Run the Application
 
 ```bash
 python app.py
 ```
 
-The application will normally be available at:
+Open the application at:
 
 ```text
 http://127.0.0.1:5000
 ```
 
-Open the address in your browser.
+---
 
-### Basic Workflow
+## 🐳 Run with Docker
+
+The project includes a Dockerfile for containerized deployment.
+
+### Build the Docker Image
+
+```bash
+docker build -t fake-review-app .
+```
+
+### Run the Container
+
+```bash
+docker run -p 10000:10000 fake-review-app
+```
+
+Open:
 
 ```text
-Open Application
-       ↓
-Enter Review
-       ↓
-Submit Review
-       ↓
-Text Preprocessing
-       ↓
-TF-IDF Transformation
-       ↓
-ML Prediction
-       ↓
-Sentiment Analysis
-       ↓
-Display Result
-       ↓
-Save Prediction
-       ↓
-View History / Dashboard
+http://localhost:10000
+```
+
+### Docker Configuration
+
+The application uses:
+
+* **Python 3.12**
+* NLTK resources installed during image build
+* Gunicorn production server
+* Dynamic `$PORT` support
+
+The container starts the application using:
+
+```text
+gunicorn --bind 0.0.0.0:${PORT:-10000} --timeout 120 app:app
 ```
 
 ---
 
-## 10. 🔮 How Prediction Works
+## ☁️ Deployment
 
-The prediction process consists of several stages.
+The application is deployed using **Docker on Render**.
 
-### Step 1: User Input
+### Deployment Configuration
 
-The user enters a review through the web interface.
+| Configuration     | Value                         |
+| ----------------- | ----------------------------- |
+| Platform          | Render                        |
+| Deployment Method | Docker                        |
+| Python            | 3.12                          |
+| Web Server        | Gunicorn                      |
+| Port              | Dynamic `$PORT`               |
+| NLP Resources     | Installed during Docker build |
 
-Example:
-
-```text
-"The product quality is excellent and I am very happy with my purchase."
-```
-
-### Step 2: Text Preprocessing
-
-The review is passed to the preprocessing module:
-
-```text
-utils/preprocess.py
-```
-
-The text is cleaned and normalized.
-
-### Step 3: TF-IDF Transformation
-
-The processed review is converted into numerical features using the saved TF-IDF vectorizer:
+### Deployment Process
 
 ```text
-models/tfidf.pkl
+GitHub Repository
+       ↓
+Dockerfile
+       ↓
+Render
+       ↓
+Docker Image Build
+       ↓
+Gunicorn
+       ↓
+Flask Application
+       ↓
+Live Web Application
 ```
 
-### Step 4: ML Prediction
+### 🚀 Live Application
 
-The transformed text is passed to the trained Machine Learning model:
-
-```text
-models/model.pkl
-```
-
-### Step 5: Classification
-
-The model produces a classification result:
-
-```text
-Fake
-```
-
-or
-
-```text
-Genuine
-```
-
-### Step 6: Confidence
-
-The application calculates/displays the prediction confidence when supported by the trained model.
-
-Example:
-
-```text
-Prediction: Genuine Review
-Confidence: 74.08%
-```
-
-### Step 7: Sentiment Analysis
-
-The review is also analyzed to determine its sentiment.
-
-```text
-Sentiment: Positive
-```
-
-### Step 8: Database Storage
-
-The prediction details are stored in the SQLite database.
+https://fake-review-detection-9i3d.onrender.com
 
 ---
 
-## 11. 🗄️ Database
+## 📸 Screenshots
 
-The project uses **SQLite** for storing prediction history.
+Add screenshots of the main application pages to a `screenshots/` directory.
 
-The database file is:
-
-```text
-database.db
-```
-
-Database-related operations are handled through:
+Recommended screenshots:
 
 ```text
-database.py
+screenshots/
+├── home.png
+├── result.png
+├── history.png
+├── dashboard.png
+└── login.png
 ```
 
-### Prediction History
+Suggested README sections:
 
-The database stores information such as:
+### 🏠 Home Page
 
-| Field      | Description                  |
-| ---------- | ---------------------------- |
-| ID         | Unique prediction identifier |
-| Review     | User-submitted review        |
-| Prediction | Fake or Genuine              |
-| Confidence | Prediction confidence        |
-| Sentiment  | Prediction sentiment         |
-| Date       | Prediction date/time         |
-
-### Database Workflow
-
-```text
-User submits review
-        ↓
-Prediction generated
-        ↓
-Prediction saved
-        ↓
-SQLite database
-        ↓
-History page
-        ↓
-Dashboard / Reports
-```
-
-The stored data is also used for generating statistics and exports.
-
----
-
-## 12. 📸 Screenshots
-
-Screenshots of the application can be added here to demonstrate the major pages.
-
-### 🏠 Home / Prediction Page
-
-Add screenshot:
-
-```text
-screenshots/home.png
-```
-
-The home page allows users to enter a review and submit it for analysis.
+Shows the interface where users enter a review for analysis.
 
 ### 🎯 Prediction Result
 
-Add screenshot:
-
-```text
-screenshots/result.png
-```
-
-Displays:
+Shows:
 
 * Fake/Genuine prediction
 * Confidence score
@@ -642,98 +478,104 @@ Displays:
 
 ### 📜 Prediction History
 
-Add screenshot:
-
-```text
-screenshots/history.png
-```
-
-Displays previously analyzed reviews.
+Shows previously analyzed reviews and their prediction information.
 
 ### 📊 Dashboard
 
-Add screenshot:
-
-```text
-screenshots/dashboard.png
-```
-
-Displays:
-
-* Total reviews
-* Genuine reviews
-* Fake reviews
-* Prediction charts
-* Sentiment statistics
+Shows prediction statistics and analytical charts.
 
 ### 🔎 Review Details
 
-Add screenshot:
-
-```text
-screenshots/review-details.png
-```
-
-Displays detailed information about an individual prediction.
-
-> **Note:** Create a `screenshots/` folder and add your actual project screenshots before publishing the final README.
+Shows detailed information about an individual prediction.
 
 ---
 
-## 13. 🚀 Future Enhancements
+## 🗄️ Database
 
-The project can be improved further with the following features:
+The application uses **SQLite** to store prediction history.
 
-* 🔥 Deep Learning models such as LSTM/BERT
-* 🤖 Transformer-based fake review detection
+Database:
+
+```text
+database.db
+```
+
+Database operations are handled through:
+
+```text
+database.py
+```
+
+The stored prediction data is used by:
+
+* Prediction History
+* Dashboard
+* Search and Filtering
+* CSV Export
+* PDF Export
+
+> For production-scale deployment, a managed database such as PostgreSQL can be considered because SQLite is file-based.
+
+---
+
+## 🚀 Future Enhancements
+
+* 🤖 Transformer-based fake-review detection
+* 🧠 BERT-based NLP models
 * 🌐 Multilingual review detection
 * 📱 Mobile application
-* ☁️ Cloud deployment
+* 🗄️ PostgreSQL production database
+* 📊 Advanced analytics
 * 🔐 Improved authentication and authorization
-* 📊 Real-time analytics
 * 🔗 Product-review URL analysis
-* 🛒 Integration with e-commerce platforms
-* 🧠 Explainable AI for prediction reasoning
+* 🧠 Explainable AI
 * 📈 Advanced model comparison
 * 🗂️ Larger and more diverse datasets
 * ⚡ Real-time review monitoring
-* 🛡️ Detection of coordinated review campaigns
 
 ---
 
-## 14. 👩‍💻 Author
+## 👩‍💻 Author
 
-**Madhuri Katta**
+### Madhuri Katta
 
-B.Tech — Computer Science & Engineering (Artificial Intelligence)
+**B.Tech — Computer Science & Engineering (Artificial Intelligence)**
 
-Passionate about Artificial Intelligence, Machine Learning, Python, and Web Application Development.
+Interested in:
 
-This project demonstrates the practical experience in:
-
+* Artificial Intelligence
 * Machine Learning
+* Python Development
 * Natural Language Processing
-* Python and Flask
-* SQLite Database Management
-* Data Analysis and Visualization
-* Full-Stack Web Application Development
+* Web Application Development
 
-🔗 Connect With Me
-GitHub: https://github.com/madhurikatta07
-LinkedIn: https://www.linkedin.com/in/madhurikatta07
-Email: [madhukatta0731@gmail.com]
+### Connect With Me
+
+**GitHub:**
+https://github.com/madhurikatta07
+
+**LinkedIn:**
+https://www.linkedin.com/in/madhurikatta07
+
+**Email:**
+[madhukatta0731@gmail.com](mailto:madhukatta0731@gmail.com)
+
 ---
 
 ## ⭐ Project Highlights
 
 ```text
-🤖 AI-based Fake Review Detection
-📝 NLP-based Text Processing
-🔍 Fake vs Genuine Review Classification
+🤖 AI/ML-based Fake Review Detection
+📝 NLP Text Preprocessing
+🔍 Fake vs Genuine Classification
+📊 Confidence Score
 😊 Sentiment Analysis
-📊 Interactive Dashboard & Analytics
-🗄️ SQLite Prediction History
-📜 Search & Filter Prediction History
-📥 CSV & PDF Report Export
+📈 Dashboard Analytics
+💾 SQLite Prediction History
+🔎 Search & Filtering
+📥 CSV & PDF Export
 🌐 Flask Web Application
-📈 Machine Learning Model Evaluation
+🐳 Dockerized Deployment
+☁️ Render Deployment
+📊 87.07% Model Accuracy
+```
