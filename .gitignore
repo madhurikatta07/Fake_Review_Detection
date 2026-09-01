@@ -108,3 +108,13 @@ textblob_data/
 # models/model.pkl     -> KEEP
 # models/tfidf.pkl     -> KEEP
 # static/charts/       -> KEEP
+
+dataset/
+exports/
+static/charts/
+models/*.pkl
+models/*.joblib
+*.db
+*.sqlite
+.env
+venv/

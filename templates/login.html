@@ -4,7 +4,6 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Admin Login | VeriReview</title>
@@ -24,7 +23,6 @@
 
 </head>
 
-
 <body>
 
     <!-- Navigation -->
@@ -36,21 +34,14 @@
 
         <div class="login-card">
 
-
             <!-- Login Header -->
             <div class="login-header">
 
                 <div class="login-icon">
-
                     <i class="fa-solid fa-shield-halved"></i>
-
                 </div>
 
-
-                <h1>
-                    Admin Login
-                </h1>
-
+                <h1>Admin Login</h1>
 
                 <p>
                     Secure access to the VeriReview dashboard
@@ -64,15 +55,29 @@
 
             {% if messages %}
 
-            {% for category, message in messages %}
+            <div class="login-messages">
 
-            <div class="flash-message {{ category }}">
+                {% for category, message in messages %}
 
-                {{ message }}
+                <div class="flash-message {{ category }}">
+
+                    {% if category == "error" %}
+                    <i class="fa-solid fa-circle-exclamation"></i>
+
+                    {% elif category == "success" %}
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    {% else %}
+                    <i class="fa-solid fa-circle-info"></i>
+                    {% endif %}
+
+                    <span>{{ message }}</span>
+
+                </div>
+
+                {% endfor %}
 
             </div>
-
-            {% endfor %}
 
             {% endif %}
 
@@ -81,7 +86,6 @@
 
             <!-- Login Form -->
             <form method="POST" class="login-form">
-
 
                 <!-- Username -->
                 <div class="input-group">
@@ -122,14 +126,13 @@
 
 
                 <!-- Login Button -->
-                <button type="submit">
+                <button type="submit" class="login-btn">
 
                     <i class="fa-solid fa-right-to-bracket"></i>
 
-                    Sign In
+                    <span>Sign In</span>
 
                 </button>
-
 
             </form>
 
@@ -137,14 +140,13 @@
             <!-- Security Information -->
             <div class="login-security">
 
-                <i class="fa-solid fa-shield-check"></i>
+                <i class="fa-solid fa-shield-halved"></i>
 
                 <span>
                     Secure administrator access
                 </span>
 
             </div>
-
 
         </div>
 
@@ -159,7 +161,6 @@
         </p>
 
     </footer>
-
 
 
 </body>

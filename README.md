@@ -174,6 +174,7 @@ The application is designed to work across different screen sizes using HTML and
 ```text
 FakeReviewDetection/
 │
+├── .env
 ├── .gitignore
 ├── Procfile
 ├── README.md
@@ -201,6 +202,13 @@ FakeReviewDetection/
 │   ├── 01_EDA.ipynb
 │   ├── 02_Preprocessing.ipynb
 │   └── 03_Model_Comparison.ipynb
+│
+├── screenshots/
+│   ├── home.png
+│   ├── result.png
+│   ├── history.png
+│   ├── dashboard.png
+│   └── login.png
 │
 ├── static/
 │   ├── css/

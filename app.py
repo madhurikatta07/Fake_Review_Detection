@@ -17,6 +17,9 @@ from flask import send_file
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4, landscape
 
+# pyrefly: ignore [missing-import]
+from dotenv import load_dotenv
+
 from reportlab.lib.styles import (
     getSampleStyleSheet,
     ParagraphStyle
@@ -32,8 +35,12 @@ from reportlab.platypus import (
 
 app = Flask(__name__)
 
-# app.secret_key = "fake-review-detection-secret-key"
-app.secret_key = "fake-review-secret-key"
+load_dotenv()
+
+app.secret_key = os.getenv("SECRET_KEY")
+
+ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
 model = joblib.load("models/model.pkl")
 vectorizer = joblib.load("models/tfidf.pkl")
@@ -357,7 +364,7 @@ def login():
         username = request.form.get("username", "").strip()
         password = request.form.get("password", "").strip()
 
-        if username == "admin" and password == "admin123":
+        if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
 
             session["admin_logged_in"] = True
 
