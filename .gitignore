@@ -101,20 +101,26 @@ exports/*
 textblob_data/
 
 
-# ------------------------------------------
-# Project files that MUST remain tracked
-# ------------------------------------------
-# dataset/              -> KEEP
-# models/model.pkl     -> KEEP
-# models/tfidf.pkl     -> KEEP
-# static/charts/       -> KEEP
-
-dataset/
-exports/
-static/charts/
-models/*.pkl
-models/*.joblib
-*.db
-*.sqlite
 .env
 venv/
+*.db
+*.sqlite
+*.sqbpro
+
+dataset/*.csv
+
+exports/*.pdf
+exports/*.csv
+
+static/charts/*.png
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
